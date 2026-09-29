@@ -25,3 +25,21 @@ if(fi&&li){
   // Bouton désactivé pendant l'envoi (les gros fichiers prennent quelques secondes)
   fi.form.addEventListener('submit',()=>{const s=fi.form.querySelector('button[type=submit]');s.disabled=true;s.textContent='Envoi en cours…';});
 }
+
+// Visionneuse des galeries « Réalisations »
+const zooms=[...document.querySelectorAll('a.zoom')];
+if(zooms.length&&window.HTMLDialogElement){
+  const d=document.createElement('dialog');d.className='visio';d.setAttribute('aria-label','Photo agrandie');
+  d.innerHTML='<figure><img alt=""><figcaption></figcaption></figure><button class="fermer" aria-label="Fermer">×</button><button class="prec" aria-label="Photo précédente">‹</button><button class="suiv" aria-label="Photo suivante">›</button>';
+  document.body.appendChild(d);
+  const im=d.querySelector('img'),cap=d.querySelector('figcaption');let grp=[],i=0;
+  const voir=k=>{i=(k+grp.length)%grp.length;const a=grp[i];im.src=a.href;im.alt=a.querySelector('img').alt;cap.textContent=a.dataset.legende||'';};
+  zooms.forEach(a=>a.addEventListener('click',e=>{e.preventDefault();grp=[...a.closest('.galerie').querySelectorAll('a.zoom')];voir(grp.indexOf(a));d.showModal();}));
+  d.querySelector('.fermer').onclick=()=>d.close();
+  d.querySelector('.prec').onclick=()=>voir(i-1);
+  d.querySelector('.suiv').onclick=()=>voir(i+1);
+  d.addEventListener('click',e=>{if(e.target===d||e.target.tagName==='FIGURE')d.close();});
+  d.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')voir(i-1);if(e.key==='ArrowRight')voir(i+1);});
+  let x0=null;d.addEventListener('touchstart',e=>x0=e.touches[0].clientX,{passive:true});
+  d.addEventListener('touchend',e=>{if(x0===null)return;const dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>50)voir(dx<0?i+1:i-1);x0=null;});
+}

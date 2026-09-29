@@ -163,3 +163,31 @@ footer .adr{margin-bottom:.7rem}footer .adr b{color:#fff;font-weight:600;display
 .fic-liste{list-style:none;padding:0;margin:.6rem 0 0;font-size:.9rem}
 .fic-liste li{padding:.35rem 0;border-bottom:1px solid var(--trait)}
 .fic-liste li.err{color:#b3261e;font-weight:600;border:0}
+
+/* ===== v5 : photos et galeries Réalisations ===== */
+.une{margin:0;border-radius:6px;overflow:hidden;aspect-ratio:4/3;background:var(--voile)}
+.une img{width:100%;height:100%;object-fit:cover}
+.vignette{display:block;border-radius:6px;overflow:hidden;aspect-ratio:4/3;background:var(--voile)}
+.vignette img{width:100%;height:100%;object-fit:cover;transition:transform .35s}
+.vignette:hover img{transform:scale(1.03)}
+.galerie figure{margin:0}
+.galerie a{display:block;border-radius:4px;overflow:hidden;aspect-ratio:4/3;background:var(--trait);cursor:zoom-in}
+.galerie img{width:100%;height:100%;object-fit:cover;transition:transform .35s}
+.galerie a:hover img{transform:scale(1.04)}
+.galerie figcaption{font-size:.88rem;color:var(--acier);padding:.45rem 0 0}
+.partenaire{margin-top:2rem}
+@media (prefers-reduced-motion:reduce){.vignette img,.galerie img{transition:none}}
+/* Visionneuse */
+.visio{border:0;padding:0;background:transparent;max-width:100vw;max-height:100vh;width:100vw;height:100vh}
+.visio::backdrop{background:rgba(20,16,17,.92)}
+.visio figure{margin:0;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3.5rem 3.5rem 1.5rem}
+.visio img{max-width:100%;max-height:calc(100vh - 7rem);width:auto;height:auto;object-fit:contain}
+.visio figcaption{color:#f3eded;margin-top:.8rem;font-size:.95rem;text-align:center}
+.visio button{position:absolute;background:rgba(255,255,255,.12);color:#fff;border:0;border-radius:50%;width:3rem;height:3rem;font-size:1.6rem;line-height:1;cursor:pointer}
+.visio button:hover{background:var(--chant)}
+.visio .fermer{top:1rem;right:1rem}
+.visio .prec{left:1rem;top:50%;transform:translateY(-50%)}
+.visio .suiv{right:1rem;top:50%;transform:translateY(-50%)}
+@media (max-width:640px){.visio figure{padding:3.5rem .5rem 1rem}.visio .prec,.visio .suiv{top:auto;bottom:1rem;transform:none}}
+/* Plaques du hero : photo de l'univers derrière le verre */
+.plaque[style*="--img"]{background:linear-gradient(180deg,rgba(255,255,255,.92) 0 2.9rem,rgba(255,255,255,.18) 2.9rem),var(--img) center/cover no-repeat}
