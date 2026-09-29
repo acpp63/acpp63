@@ -175,7 +175,6 @@ footer .adr{margin-bottom:.7rem}footer .adr b{color:#fff;font-weight:600;display
 .galerie img{width:100%;height:100%;object-fit:cover;transition:transform .35s}
 .galerie a:hover img{transform:scale(1.04)}
 .galerie figcaption{font-size:.88rem;color:var(--acier);padding:.45rem 0 0}
-.partenaire{margin-top:2rem}
 @media (prefers-reduced-motion:reduce){.vignette img,.galerie img{transition:none}}
 /* Visionneuse */
 .visio{border:0;padding:0;background:transparent;max-width:100vw;max-height:100vh;width:100vw;height:100vh}
@@ -191,3 +190,4 @@ footer .adr{margin-bottom:.7rem}footer .adr b{color:#fff;font-weight:600;display
 @media (max-width:640px){.visio figure{padding:3.5rem .5rem 1rem}.visio .prec,.visio .suiv{top:auto;bottom:1rem;transform:none}}
 /* Plaques du hero : photo de l'univers derrière le verre */
 .plaque[style*="--img"]{background:linear-gradient(180deg,rgba(255,255,255,.92) 0 2.9rem,rgba(255,255,255,.18) 2.9rem),var(--img) center/cover no-repeat}
+.adresse .une{margin:0 0 .9rem}
