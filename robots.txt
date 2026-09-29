@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /merci.html
+Disallow: /erreur.html
+Sitemap: https://acpp63.fr/sitemap.xml

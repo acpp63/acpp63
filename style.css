@@ -1,0 +1,123 @@
+/* ACPP — feuille de style unique. Couleurs à ajuster ici si une charte existe. */
+:root{
+  --graphite:#1d2830; --acier:#5d6b76; --voile:#eef2f3; --blanc:#fff;
+  --chant:#0f7c78;      /* vert-bleu du chant d'une plaque acrylique */
+  --chant-fonce:#0b625f; --chant-clair:#bfe3df; --trait:#d5dde0;
+  --f:"Archivo",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --w:72rem;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:5rem}
+body{margin:0;font-family:var(--f);font-size:1.0625rem;line-height:1.6;color:var(--graphite);background:var(--blanc)}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--chant)}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--chant);outline-offset:2px}
+h1,h2,h3{font-stretch:115%;line-height:1.1;margin:0 0 .6em;letter-spacing:-.01em}
+h1{font-size:clamp(2.3rem,6vw,4.4rem);font-weight:800}
+h2{font-size:clamp(1.6rem,3.4vw,2.4rem);font-weight:750}
+h3{font-size:1.25rem;font-weight:700}
+p{margin:0 0 1em;max-width:62ch}
+.wrap{max-width:var(--w);margin:0 auto;padding:0 1.25rem}
+.skip{position:absolute;left:-999px}.skip:focus{left:1rem;top:1rem;background:#fff;padding:.5rem 1rem;z-index:99}
+
+/* En-tête */
+.top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--trait)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;min-height:4.25rem;gap:1rem;position:relative}
+.logo{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--graphite)}
+.logo b{font-stretch:125%;font-weight:800;font-size:1.35rem;letter-spacing:.02em}
+.logo small{font-size:.78rem;color:var(--acier);line-height:1.2;max-width:10rem}
+.nav{display:flex;gap:1.4rem;align-items:center}
+.nav a{text-decoration:none;color:var(--graphite);font-weight:550}
+.nav a[aria-current=page]{color:var(--chant);box-shadow:inset 0 -2px 0 var(--chant)}
+.menu-btn{display:none;background:none;border:1px solid var(--trait);border-radius:6px;padding:.45rem .7rem;font:inherit;font-weight:600;color:var(--graphite)}
+@media (max-width:860px){
+  .menu-btn{display:block}
+  .nav{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;align-items:stretch;padding:.5rem 1.25rem 1.25rem;border-bottom:1px solid var(--trait);gap:0}
+  .nav.open{display:flex}
+  .nav a{padding:.8rem 0;border-bottom:1px solid var(--voile)}
+  .nav a[aria-current=page]{box-shadow:none}
+  .nav .btn{margin-top:.8rem;text-align:center}
+}
+
+/* Boutons */
+.btn{display:inline-block;background:var(--chant);color:#fff;text-decoration:none;padding:.85rem 1.4rem;border-radius:6px;border:0;font:inherit;font-weight:700;cursor:pointer}
+.btn:hover{background:var(--chant-fonce)}
+.btn.ghost{background:transparent;color:var(--graphite);box-shadow:inset 0 0 0 2px var(--graphite)}
+.btn.ghost:hover{background:var(--graphite);color:#fff}
+.nav .btn{color:#fff;padding:.6rem 1.1rem}
+
+/* Hero : l'élément signature = trois plaques translucides empilées, une par univers */
+.hero{background:var(--voile);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:3rem;align-items:center;padding-top:4.5rem;padding-bottom:4.5rem}
+.hero .lead{font-size:1.2rem;color:#35444f}
+.actions{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.6rem}
+.plaques{position:relative;height:22rem}
+.plaque{position:absolute;width:62%;height:60%;border-radius:4px;display:flex;align-items:flex-start;padding:.8rem 1rem;text-decoration:none;color:var(--graphite);font-weight:750;font-stretch:115%;font-size:1.15rem;
+  background:linear-gradient(135deg,rgba(255,255,255,.8),rgba(255,255,255,.4));border:1px solid rgba(255,255,255,.95);
+  box-shadow:inset 0 0 0 1px rgba(15,124,120,.35),6px 6px 0 var(--chant-clair);backdrop-filter:blur(3px);transition:transform .25s}
+.plaque:hover{transform:translate(-4px,-4px)}
+.plaque:nth-child(1){top:0;left:0}
+.plaque:nth-child(2){top:20%;left:19%}
+.plaque:nth-child(3){top:40%;left:38%;box-shadow:inset 0 0 0 1px rgba(15,124,120,.35),6px 6px 0 var(--chant)}
+@media (prefers-reduced-motion:reduce){.plaque{transition:none}}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr;padding-top:2.5rem;padding-bottom:3rem}.plaques{height:15rem}}
+
+/* Sections */
+.bloc{padding:4.5rem 0}
+.gris{background:var(--voile)}
+.sombre{background:var(--graphite);color:#e8eef0}
+.sombre a{color:var(--chant-clair)}
+.intro{max-width:46rem}
+.trois{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2.5rem}
+.univers{border-top:3px solid var(--chant);padding-top:1.2rem}
+.univers .suite{font-weight:700;text-decoration:none}
+.deux{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+@media (max-width:860px){.trois,.deux{grid-template-columns:1fr;gap:2rem}}
+.liste{padding:0;list-style:none;margin:0 0 1.2rem}
+.liste li{padding:.6rem 0 .6rem 1.4rem;border-bottom:1px solid var(--trait);position:relative}
+.liste li::before{content:"";position:absolute;left:0;top:1.15rem;width:.6rem;height:.6rem;background:var(--chant)}
+.sombre .liste li{border-color:#33434e}
+
+/* Emplacements photo — à remplacer par les vraies images (balise <img>) */
+.photo{aspect-ratio:4/3;background:repeating-linear-gradient(135deg,#e3e9eb 0 12px,#edf1f2 12px 24px);border:1px dashed #9fb0b8;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--acier);font-size:.9rem;padding:1rem;border-radius:4px}
+.galerie{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}
+@media (max-width:640px){.galerie{grid-template-columns:1fr 1fr}}
+
+/* Bandeau d'appel */
+.appel{background:var(--chant);color:#fff;padding:3.5rem 0}
+.appel .wrap{display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap}
+.appel h2{margin:0}
+.appel .btn{background:#fff;color:var(--chant)}
+.appel .btn:hover{background:var(--graphite);color:#fff}
+
+/* Pages intérieures */
+.entete{background:var(--voile);padding:3.5rem 0 3rem;border-bottom:1px solid var(--trait)}
+.entete .lead{font-size:1.15rem;color:#35444f}
+.fil{font-size:.9rem;color:var(--acier);margin-bottom:.8rem}.fil a{color:var(--acier)}
+
+/* Formulaire */
+.contact{display:grid;gap:1rem}
+.champ label{display:block;font-weight:650;margin-bottom:.3rem}
+.champ input,.champ textarea,.champ select{width:100%;font:inherit;padding:.75rem .85rem;border:1px solid #b7c3c9;border-radius:6px;background:#fff;color:var(--graphite)}
+.champ textarea{min-height:9rem;resize:vertical}
+.hp{position:absolute;left:-9999px}
+.rgpd{font-size:.88rem;color:var(--acier)}
+.coord p{margin:0 0 1.2rem}.coord strong{display:block}
+.carte{border:0;width:100%;aspect-ratio:4/3;border-radius:4px}
+.msg{padding:1rem 1.2rem;border-radius:6px;background:#e3f3f1;border-left:4px solid var(--chant)}
+.msg.err{background:#fdeceb;border-color:#b3261e}
+
+/* Pied de page */
+footer{background:var(--graphite);color:#b9c6cc;padding:3rem 0 2rem;font-size:.95rem}
+footer .wrap{display:grid;grid-template-columns:2fr 1fr 1fr;gap:2rem}
+footer a{color:#e8eef0;text-decoration:none}footer a:hover{text-decoration:underline}
+footer p{margin:0 0 .5rem}
+footer .bas{grid-column:1/-1;border-top:1px solid #33434e;padding-top:1.2rem;font-size:.85rem}
+@media (max-width:760px){footer .wrap{grid-template-columns:1fr}}
+
+/* Surlignage des textes à compléter — supprimer la classe une fois le texte validé */
+.a-completer{background:#fff4c7;outline:1px dashed #c9a400;padding:0 .2em}
+/* Liste d'étapes numérotée (vraie séquence) */
+ol.liste{counter-reset:e}
+ol.liste li{counter-increment:e;padding-left:2.2rem}
+ol.liste li::before{content:counter(e);background:none;color:var(--chant);font-weight:800;font-stretch:115%;width:auto;height:auto;top:.6rem}
